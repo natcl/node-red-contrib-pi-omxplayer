@@ -21,13 +21,14 @@ module.exports = function(RED) {
 
         this.on('input', function(msg) {
             var filename = node.filename || msg.filename || "";
-            if (filename == ""){
-                node.warn('No filename provided.');
-                return;
-            }
 
             if (msg.payload == 'play') {
-                omxp.open(filename, opts);
+                if (filename == ""){
+                    node.warn('No filename provided.');
+                    return;
+                } else {
+                    omxp.open(filename, opts);
+                }
             }
             if (msg.payload == 'playpause') {
                 omxp.playPause(function(err){
