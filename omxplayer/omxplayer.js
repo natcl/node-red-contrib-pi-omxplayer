@@ -40,6 +40,11 @@ module.exports = function(RED) {
                     if (err) node.error(err, msg);
                 });
             }
+            if (msg.payload == 'stop') {
+                omxp.stop(function(err){
+                    if (err) node.error(err, msg);
+                });
+            }
         });
 
         omxp.on('finish', function() {
