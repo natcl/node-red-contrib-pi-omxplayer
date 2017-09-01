@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Node-RED node to control OMXPlayer on the Raspberry pi",
   "dependencies": {
-    "omxplayer-controll": "git+https://git@github.com/winstonwp/omxplayer-controll.git#ccfa83780746c4f0032d62f86fa5fa01451cc5f7"
+    "omxplayer-controll": "git+https://git@github.com/natcl/omxplayer-controll.git#8012d57500d19a2b2e05dd354fffeda82ea58cbc"
   },
   "repository": {
     "type": "git",
