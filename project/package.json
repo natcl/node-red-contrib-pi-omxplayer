@@ -12,6 +12,6 @@
   },
   "keywords": ["node-red", "omxplayer"],
   "scripts": {
-    "start": "npm install -f ; node node_modules/node-red/red.js -v -u ."
+    "start": "rm -rf node_modules/node-red-contrib-pi-omxplayer ; npm install -f ; node node_modules/node-red/red.js -v -u ."
   }
 }
