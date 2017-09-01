@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    RED.nodes.registerType('rpi-omxplayer',{
+        category: 'Raspberry Pi',
+        color: '#c6dbef',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "rpi.png",
+        label: function() {
+            return this.name||"omxplayer";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="rpi-omxplayer">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="rpi-omxplayer">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

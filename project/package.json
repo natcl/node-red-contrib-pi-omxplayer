@@ -1,0 +1,17 @@
+{
+  "name": "omxplayer-example",
+  "version": "0.0.1",
+  "description": "A Node-RED node to control OMXPlayer on the Raspberry pi",
+  "dependencies": {
+    "node-red": "~0.17.0",
+    "node-red-contrib-pi-omxplayer": "../"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natcl/node-red-contrib-pm2.git"
+  },
+  "keywords": ["node-red", "omxplayer"],
+  "scripts": {
+    "start": "npm install -f ; node node_modules/node-red/red.js -v -u ."
+  }
+}
