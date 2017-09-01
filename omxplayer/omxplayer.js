@@ -25,7 +25,7 @@ module.exports = function(RED) {
             'closeOtherPlayers': true //Should close other players if necessary
         };
 
-        this.on('input', function(msg) {
+        node.on('input', function(msg) {
             var filename = node.filename || msg.filename || "";
 
             if (msg.payload == 'play') {
@@ -70,6 +70,10 @@ module.exports = function(RED) {
 
         omxp.on('finish', function() {
             node.warn('============= Finished =============');
+        });
+
+        node.on('close', function() {
+            omxp.removeAllListeners('finish');
         });
     }
     RED.nodes.registerType("rpi-omxplayer", omxControl);
