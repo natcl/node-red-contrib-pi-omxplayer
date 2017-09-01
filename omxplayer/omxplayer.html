@@ -4,7 +4,10 @@
         color: '#c6dbef',
         defaults: {
             name: {value:""},
-            filename: {value:""}
+            filename: {value:""},
+            audiooutput: {value:"hdmi"},
+            blackbackground: {value: "true"},
+            disablekeys: {value: "false"}
         },
         inputs:1,
         outputs:1,
@@ -22,6 +25,21 @@
     <div class="form-row node-input-filename">
          <label for="node-input-filename"><i class="fa fa-file"></i> Filename</label>
          <input id="node-input-filename" type="text">
+    </div>
+
+    <div class="form-row node-input-audiooutput">
+         <label for="node-input-audiooutput"><i class="fa volume-up"></i> Audio output</label>
+         <input id="node-input-audiooutput" type="text">
+    </div>
+
+    <div class="form-row">
+        <label><i class="fa fa-wrench"></i> Black background</span></label>
+        <input type="checkbox" id="node-input-blackbackground" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+
+    <div class="form-row">
+        <label><i class="fa fa-keyboard-o"></i> Disable keys</span></label>
+        <input type="checkbox" id="node-input-disablekeys" style="display: inline-block; width: auto; vertical-align: top;">
     </div>
 
     <div class="form-row">
