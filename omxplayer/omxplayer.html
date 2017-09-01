@@ -7,7 +7,10 @@
             filename: {value:""},
             audiooutput: {value:"hdmi"},
             blackbackground: {value: true},
-            disablekeys: {value: false}
+            disablekeys: {value: false},
+            disableosd: {value: false},
+            disableghostbox: {value: false},
+            subtitlepath: {value: ""}
         },
         inputs:1,
         outputs:1,
@@ -38,8 +41,23 @@
     </div>
 
     <div class="form-row">
-        <label><i class="fa fa-keyboard-o"></i> Disable keys</span></label>
+        <label><i class="fa fa-wrench"></i> Disable keys</span></label>
         <input type="checkbox" id="node-input-disablekeys" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+
+    <div class="form-row">
+        <label><i class="fa fa-desktop"></i> Disable OSD</span></label>
+        <input type="checkbox" id="node-input-disableosd" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+
+    <div class="form-row">
+        <label><i class="fa fa-wrench"></i> Disable Ghostbox</span></label>
+        <input type="checkbox" id="node-input-disableghostbox" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-subtitlepath"><i class=" fa fa-font"></i> Subtitle path</label>
+        <input type="text" id="node-input-subtitlepath" placeholder="Name">
     </div>
 
     <div class="form-row">

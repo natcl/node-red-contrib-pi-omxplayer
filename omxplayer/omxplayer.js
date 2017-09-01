@@ -6,17 +6,20 @@ module.exports = function(RED) {
         var node = this;
 
         node.filename = config.filename;
-        node.audioOutput = config.audiooutput;
-        node.blackBackground = config.blackbackground;
-        node.disableKeys = config.disablekeys;
+        node.audiooutput = config.audiooutput;
+        node.blackbackground = config.blackbackground;
+        node.disablekeys = config.disablekeys;
+        node.disableosd = config.disableosd;
+        node.disableghostbox = config.disableghostbox;
+        node.subtitlepath = config.subtitlepath;
 
         var opts = {
-            'audioOutput': node.audioOutput || 'hdmi',
-            'blackBackground': node.blackBackground || true,
-            'disableKeys': node.disableKeys || false,
-            'disableOnScreenDisplay': true,
-            'disableGhostbox': true,
-            'subtitlePath': '',
+            'audioOutput': node.audiooutput || 'hdmi',
+            'blackBackground': node.blackbackground || true,
+            'disableKeys': node.disablekeys || false,
+            'disableOnScreenDisplay': node.disableosd || false,
+            'disableGhostbox': node.disableghostbox || false,
+            'subtitlePath': node.subtitlepath || '',
             'startAt': 0,
             'startVolume': 0.8,
             'closeOtherPlayers': true //Should close other players if necessary
