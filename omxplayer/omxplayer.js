@@ -51,6 +51,21 @@ module.exports = function(RED) {
                     if (err) node.error(err, msg);
                 });
             }
+            if (msg.payload == 'volumeup') {
+                omxp.volumeUp(function(err){
+                    if (err) node.error(err, msg);
+                });
+            }
+            if (msg.payload == 'volumedown') {
+                omxp.volumeDown(function(err){
+                    if (err) node.error(err, msg);
+                });
+            }
+            if (msg.payload == 'getduration') {
+                omxp.getDuration(function(err, duration){
+                    node.warn(duration);
+                });
+            }
         });
 
         omxp.on('finish', function() {
