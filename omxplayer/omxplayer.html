@@ -3,7 +3,8 @@
         category: 'Raspberry Pi',
         color: '#c6dbef',
         defaults: {
-            name: {value:""}
+            name: {value:""},
+            filename: {value:""}
         },
         inputs:1,
         outputs:1,
@@ -18,6 +19,11 @@
 </script>
 
 <script type="text/x-red" data-template-name="rpi-omxplayer">
+    <div class="form-row node-input-filename">
+         <label for="node-input-filename"><i class="fa fa-file"></i> <span data-i18n="file.label.filename"></span></label>
+         <input id="node-input-filename" type="text">
+    </div>
+
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">

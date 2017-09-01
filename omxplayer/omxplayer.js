@@ -5,6 +5,8 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node = this;
 
+        node.filename = config.filename;
+
         var opts = {
             'audioOutput': 'alsa:hw:1,0',
             'blackBackground': false,
@@ -18,8 +20,14 @@ module.exports = function(RED) {
         };
 
         this.on('input', function(msg) {
+            var filename = node.filename || msg.filename || "";
+            if (filename == ""){
+                node.warn('No filename provided.');
+                return;
+            }
+
             if (msg.payload == 'play') {
-                omxp.open('/home/pi/source/2017_mnk/openframeworks/myApps/MF-MNK-VideoArtnet/bin/data/video/test_1080.mov', opts);
+                omxp.open(filename, opts);
             }
             if (msg.payload == 'playpause') {
                 omxp.playPause(function(err){
