@@ -6,11 +6,14 @@ module.exports = function(RED) {
         var node = this;
 
         node.filename = config.filename;
+        node.audioOutput = config.audiooutput;
+        node.blackBackground = config.blackbackground;
+        node.disableKeys = config.disablekeys;
 
         var opts = {
-            'audioOutput': 'alsa:hw:1,0',
-            'blackBackground': false,
-            'disableKeys': true,
+            'audioOutput': node.audioOutput || 'hdmi',
+            'blackBackground': node.blackBackground || true,
+            'disableKeys': node.disableKeys || false,
             'disableOnScreenDisplay': true,
             'disableGhostbox': true,
             'subtitlePath': '',
