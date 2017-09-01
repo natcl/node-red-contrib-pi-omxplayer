@@ -15,10 +15,10 @@ module.exports = function(RED) {
 
         var opts = {
             'audioOutput': node.audiooutput || 'hdmi',
-            'blackBackground': node.blackbackground || true,
-            'disableKeys': node.disablekeys || false,
-            'disableOnScreenDisplay': node.disableosd || false,
-            'disableGhostbox': node.disableghostbox || false,
+            'blackBackground': node.blackbackground,
+            'disableKeys': node.disablekeys,
+            'disableOnScreenDisplay': node.disableosd,
+            'disableGhostbox': node.disableghostbox,
             'subtitlePath': node.subtitlepath || '',
             'startAt': 0,
             'startVolume': 0.8,
