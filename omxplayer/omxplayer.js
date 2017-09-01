@@ -35,6 +35,11 @@ module.exports = function(RED) {
                     if (err) node.error(err, msg);
                 });
             }
+            if (msg.payload == 'pause') {
+                omxp.pause(function(err){
+                    if (err) node.error(err, msg);
+                });
+            }
         });
 
         omxp.on('finish', function() {
