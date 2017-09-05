@@ -166,6 +166,7 @@ module.exports = function(RED) {
 
         node.on('close', () => {
             omxp.removeAllListeners('finish');
+            omxp.removeAllListeners('changeStatus');
         });
     }
     RED.nodes.registerType("rpi-omxplayer", omxControl);
