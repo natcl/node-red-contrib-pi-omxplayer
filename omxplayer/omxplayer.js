@@ -91,6 +91,7 @@ module.exports = function(RED) {
                 msg.status = {status:null};
                 omxp.getStatus((err, status) => {
                     if (status) {
+                        node.warn('hey !');
                         msg.status.status = status;
                     } else {
                         node.error(err);
