@@ -76,32 +76,47 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getduration') {
-                omxp.getDuration((err, duration) => {
-                    msg.status = {};
-                    msg.status.duration = duration;
-                });
-            }
-            if (msg.payload == 'getposition') {
-                omxp.getDuration((err, position) => {
-                    msg.status = {};
-                    msg.status.position = position;
-                });
-            }
-            if (msg.payload == 'getstatus') {
-                msg.status = {};
-                omxp.getStatus((err, status) => {
-                    if (status) {
-                        msg.status.status = status;
+                omxp.getVolume(err, duration => {
+                    if (duration) {
+                        msg.status = {};
+                        msg.status.duration = duration;
+                        node.send(msg);
                     } else {
                         node.error(err);
                     }
-                    node.send(msg);
+                });
+            }
+            if (msg.payload == 'getposition') {
+                omxp.getVolume(err, position => {
+                    if (position) {
+                        msg.status = {};
+                        msg.status.pos = position;
+                        node.send(msg);
+                    } else {
+                        node.error(err);
+                    }
+                });
+            }
+            if (msg.payload == 'getstatus') {
+                omxp.getStatus((err, status) => {
+                    if (status) {
+                        msg.status = {};
+                        msg.status.status = status;
+                        node.send(msg);
+                    } else {
+                        node.error(err);
+                    }
                 });
             }
             if (msg.payload == 'getvolume') {
                 omxp.getVolume(err, volume => {
-                    msg.status = {};
-                    msg.status.vol = volume;
+                    if (volume) {
+                        msg.status = {};
+                        msg.status.vol = volume;
+                        node.send(msg);
+                    } else {
+                        node.error(err);
+                    }
                 });
             }
             if (msg.payload.startsWith('setvolume')) {
@@ -118,7 +133,6 @@ module.exports = function(RED) {
                     if (err) node.error(err);
                 });
             }
-            //node.send(msg);
         });
 
         function updateStatus() {
