@@ -89,14 +89,13 @@ module.exports = function(RED) {
             }
             if (msg.payload == 'getstatus') {
                 msg.status = {status:null};
-                omxp.getStatus((err, status) => {
+                omxp.getStatus((err, status, msg) => {
                     if (status) {
-                        node.warn('hey !');
                         msg.status.status = status;
                     } else {
                         node.error(err);
                     }
-                }).bind(msg);
+                });
             }
             if (msg.payload == 'getvolume') {
                 omxp.getVolume(function(err, volume){
