@@ -1,0 +1,398 @@
+[
+    {
+        "id": "2061eb7b.0609a4",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "66f965c2.e03ec4",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "open",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "d6c41436.de28f8",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "playpause",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 140,
+        "y": 200,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "8b51203b.adebf",
+        "type": "change",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "/home/pi/source/2017_mnk/openframeworks/myApps/MF-MNK-VideoArtnet/bin/data/video/test_1080.mov",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "9cce8945.951d3",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "open",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "8b51203b.adebf"
+            ]
+        ]
+    },
+    {
+        "id": "854eeb35.ef2468",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "pause",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "b38c0a8f.19d75",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "stop",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "1757b17e.2b92e7",
+        "type": "change",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "/home/pi/source/2017_mnk/openframeworks/myApps/MF-MNK-VideoArtnet/bin/data/video/test_1080.mp4",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 40,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "fda89914.13ece",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "open",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "1757b17e.2b92e7"
+            ]
+        ]
+    },
+    {
+        "id": "4d06626.a3f5a1c",
+        "type": "rpi-omxplayer",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "filename": "/home/pi/source/2017_mnk/openframeworks/myApps/MF-MNK-VideoArtnet/bin/data/video/test_1080.mp4",
+        "audiooutput": "hdmi",
+        "blackbackground": true,
+        "disablekeys": false,
+        "disableosd": true,
+        "disableghostbox": false,
+        "subtitlepath": "",
+        "loop": false,
+        "x": 670,
+        "y": 180,
+        "wires": [
+            [
+                "3a759601.36899a"
+            ]
+        ]
+    },
+    {
+        "id": "b8d81d1e.3672e",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "volumeup",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 140,
+        "y": 320,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "f4176b3e.bcb31",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "volumedown",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "aa91f580.ef70f8",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "getduration",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "77393cb6.728b94",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "getstatus",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 140,
+        "y": 440,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "96531983.f34c28",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "getvolume",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 140,
+        "y": 480,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "2d759f72.e04238",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "setvolume 1",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 520,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "b2723b40.10afe",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "setvolume 0.5",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 560,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "6048f75c.061338",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "setvolume 0",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 600,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "cb92f925.de5168",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "setvolume 3",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 640,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    },
+    {
+        "id": "3a759601.36899a",
+        "type": "debug",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 870,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "238148ed.58b2b8",
+        "type": "inject",
+        "z": "2061eb7b.0609a4",
+        "name": "",
+        "topic": "",
+        "payload": "setposition 100",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 160,
+        "y": 680,
+        "wires": [
+            [
+                "4d06626.a3f5a1c"
+            ]
+        ]
+    }
+]
