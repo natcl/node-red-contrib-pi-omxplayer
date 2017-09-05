@@ -83,6 +83,11 @@ module.exports = function(RED) {
                     if (status) node.warn(status);
                 });
             }
+            if (msg.payload == 'getvolume') {
+                omxp.getVolume(function(err, volume){
+                    node.warn(volume);
+                });
+            }
         });
 
         function updateStatus() {
@@ -90,13 +95,13 @@ module.exports = function(RED) {
                 if (status) {
                     switch (status) {
                         case 'Playing':
-                            node.status({fill:"green",shape:"dot",text:"Playing..."});
+                            node.status({fill:"green",shape:"dot",text:"Playing"});
                             break;
                         case 'Stopped':
                             node.status({fill:"red",shape:"dot",text:"Stopped"});
                             break;
                         case 'Paused':
-                            node.status({fill:"gray",shape:"dot",text:"Paused..."});
+                            node.status({fill:"gray",shape:"dot",text:"Paused"});
                             break;
                     }
                 }
@@ -107,13 +112,13 @@ module.exports = function(RED) {
         omxp.on('changeStatus',function(status) {
             switch (status.status) {
                 case 'Playing':
-                    node.status({fill:"green",shape:"dot",text:"Playing..."});
+                    node.status({fill:"green",shape:"dot",text:"Playing"});
                     break;
                 case 'Stopped':
                     node.status({fill:"red",shape:"dot",text:"Stopped"});
                     break;
                 case 'Paused':
-                    node.status({fill:"gray",shape:"dot",text:"Paused..."});
+                    node.status({fill:"gray",shape:"dot",text:"Paused"});
                     break;
             }
         });
