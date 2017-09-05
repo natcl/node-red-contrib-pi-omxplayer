@@ -62,3 +62,5 @@ typings/
 
 # Node-RED
 .config.json
+.flows.json.backup
+flows_cred.json
