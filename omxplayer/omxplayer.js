@@ -11,6 +11,7 @@ module.exports = function(RED) {
         node.disablekeys = config.disablekeys;
         node.disableosd = config.disableosd;
         node.disableghostbox = config.disableghostbox;
+        node.loop = config.loop;
         node.subtitlepath = config.subtitlepath;
 
         var opts = {
@@ -19,6 +20,7 @@ module.exports = function(RED) {
             'disableKeys': node.disablekeys,
             'disableOnScreenDisplay': node.disableosd,
             'disableGhostbox': node.disableghostbox,
+            'loop': node.loop,
             'subtitlePath': node.subtitlepath || '',
             'startAt': 0,
             'startVolume': 0.8,
@@ -90,7 +92,6 @@ module.exports = function(RED) {
             }
             if (msg.payload.startsWith('setvolume')) {
                 var volume = parseFloat(msg.payload.split(' ')[1]);
-                node.warn(volume);
                 if (volume > 1) volume = 1;
                 if (volume < 0) volume = 0;
                 omxp.setVolume(volume, function(err, volume){
