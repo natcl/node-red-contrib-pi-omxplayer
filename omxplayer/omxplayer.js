@@ -73,7 +73,7 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getstatus') {
-                omxp.getDuration(function(err, status){
+                omxp.getStatus(function(err, status){
                     node.warn(status);
                 });
             }
