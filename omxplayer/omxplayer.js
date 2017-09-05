@@ -75,7 +75,7 @@ module.exports = function(RED) {
             if (msg.payload == 'getstatus') {
                 try {
                     omxp.getStatus(function(err, status){
-                        node.warn(status);
+                        if (status) node.warn(status);
                     });
                 } catch (err) {
                     node.error(err);
