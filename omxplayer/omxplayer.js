@@ -73,9 +73,13 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getstatus') {
-                omxp.getStatus(function(err, status){
-                    node.warn(status);
-                });
+                try {
+                    omxp.getStatus(function(err, status){
+                        node.warn(status);
+                    });
+                } catch (err) {
+                    node.error(err);
+                }
             }
         });
 
