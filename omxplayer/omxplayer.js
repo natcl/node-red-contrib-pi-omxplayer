@@ -109,7 +109,7 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getvolume') {
-                omxp.getVolume(err, volume => {
+                omxp.getVolume((err, volume) => {
                     if (volume) {
                         msg.status = {};
                         msg.status.vol = volume;
