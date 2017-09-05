@@ -76,7 +76,7 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getduration') {
-                omxp.getVolume((err, duration) => {
+                omxp.getDuration((err, duration) => {
                     if (duration) {
                         msg.status = {};
                         msg.status.duration = duration;
@@ -87,7 +87,7 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getposition') {
-                omxp.getVolume((err, position) => {
+                omxp.getPosition((err, position) => {
                     if (position) {
                         msg.status = {};
                         msg.status.pos = position;
