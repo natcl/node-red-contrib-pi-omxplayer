@@ -34,12 +34,12 @@ module.exports = function(RED) {
                     return;
                 } else {
                     omxp.open(filename, opts);
-                    omxp.getStatus(function(err, status){
-                        node.warn(status);
-                        if (status == 'Playing') {
-                            node.status({fill:"green",shape:"dot",text:"Playing..."});
-                        }
-                    });
+                    // omxp.getStatus(function(err, status){
+                    //     node.warn(status);
+                    //     if (status == 'Playing') {
+                    //         node.status({fill:"green",shape:"dot",text:"Playing..."});
+                    //     }
+                    // });
                 }
             }
             if (msg.payload == 'playpause') {
