@@ -34,7 +34,6 @@ module.exports = function(RED) {
                     return;
                 } else {
                     omxp.open(filename, opts);
-                    setTimeout(updateStatus, 100);
                 }
             }
             if (msg.payload == 'playpause') {
@@ -106,7 +105,17 @@ module.exports = function(RED) {
         }
 
         omxp.on('changeStatus',function(status) {
-            node.warn(status);
+            switch (status.status) {
+                case 'Playing':
+                    node.status({fill:"green",shape:"dot",text:"Playing..."});
+                    break;
+                case 'Stopped':
+                    node.status({fill:"red",shape:"dot",text:"Stopped"});
+                    break;
+                case 'Paused':
+                    node.status({fill:"gray",shape:"dot",text:"Paused..."});
+                    break;
+            }
         });
 
         omxp.on('finish', function() {
