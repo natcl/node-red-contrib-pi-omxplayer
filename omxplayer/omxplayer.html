@@ -73,5 +73,24 @@
 </script>
 
 <script type="text/x-red" data-help-name="rpi-omxplayer">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <p>A node to control OMXPlayer on the Raspberry pi</p>
+    <p>This node will accept the following commands as <code>msg.payload</code>:</p>
+    <ul>
+        <li>open</li>
+        <li>playpause</li>
+        <li>pause</li>
+        <li>stop</li>
+        <li>volumeup</li>
+        <li>volumedown</li>
+        <li>getduration</li>
+        <li>getposition</li>
+        <li>getstatus</li>
+        <li>getvolume</li>
+        <li>setvolume float (0-1)</li>
+        <li>setposition int</li>
+    </ul>
+    <p>The file to play can be set either in the node configuration or by using <code>msg.filename</code>.
+    The filename set in the configuration has precedence over <code>msg.filename</code>.</p>
+    <p>The node will output it&#39;s current status periodically in the <code>msg.status</code> object.
+    Calls to the different getter functions will also return a <code>msg.status</code> object.</p>
 </script>
