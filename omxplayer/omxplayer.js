@@ -107,6 +107,7 @@ module.exports = function(RED) {
 
         omxp.on('finish', function() {
             node.warn('============= Finished =============');
+            node.status({fill:"red",shape:"dot",text:"Stopped"});
         });
 
         node.on('close', function() {
