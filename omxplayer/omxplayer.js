@@ -131,11 +131,17 @@ module.exports = function(RED) {
                     node.status({fill:"gray",shape:"dot",text:"Paused"});
                     break;
             }
+            var msg = {};
+            msg.status = status;
+            node.send(msg);
         });
 
         omxp.on('finish', function() {
-            node.warn('============= Finished =============');
             node.status({fill:"red",shape:"dot",text:"Stopped"});
+            var msg = {};
+            msg.status = {};
+            msg.status.status = 'Stoped';
+            node.send(msg);
         });
 
         node.on('close', function() {
