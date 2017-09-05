@@ -108,13 +108,13 @@ module.exports = function(RED) {
                 if (volume > 1) volume = 1;
                 if (volume < 0) volume = 0;
                 omxp.setVolume(volume, (err, volume) => {
-                    node.error(err);
+                    if (err) node.error(err);
                 });
             }
             if (msg.payload.startsWith('setposition')) {
                 var position = parseInt(msg.payload.split(' ')[1]);
                 omxp.setPosition(position, err => {
-                    node.error(err);
+                    if (err) node.error(err);
                 });
             }
             node.send(msg);
