@@ -28,12 +28,18 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             var filename = node.filename || msg.filename || "";
 
-            if (msg.payload == 'play') {
+            if (msg.payload == 'open') {
                 if (filename == ""){
                     node.warn('No filename provided.');
                     return;
                 } else {
                     omxp.open(filename, opts);
+                    omxp.getStatus(function(err, status){
+                        node.warn(status);
+                        if (status == 'Playing') {
+                            node.status({fill:"green",shape:"dot",text:"Playing..."});
+                        }
+                    });
                 }
             }
             if (msg.payload == 'playpause') {
@@ -64,6 +70,11 @@ module.exports = function(RED) {
             if (msg.payload == 'getduration') {
                 omxp.getDuration(function(err, duration){
                     node.warn(duration);
+                });
+            }
+            if (msg.payload == 'getstatus') {
+                omxp.getDuration(function(err, status){
+                    node.warn(status);
                 });
             }
         });
