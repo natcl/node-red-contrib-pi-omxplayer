@@ -89,7 +89,7 @@ module.exports = function(RED) {
             }
             if (msg.payload == 'getstatus') {
                 msg.status = {};
-                omxp.getStatus(function(err, status){
+                omxp.getStatus((err, status) => {
                     if (status) {
                         msg.status.status = status;
                     } else {
