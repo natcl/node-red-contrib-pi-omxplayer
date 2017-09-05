@@ -96,7 +96,7 @@ module.exports = function(RED) {
                     } else {
                         node.error(err);
                     }
-                });
+                }).bind(msg);
             }
             if (msg.payload == 'getvolume') {
                 omxp.getVolume(function(err, volume){
