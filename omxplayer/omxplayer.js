@@ -27,7 +27,7 @@ module.exports = function(RED) {
             'closeOtherPlayers': true //Should close other players if necessary
         };
 
-        node.on('input', function(msg) {
+        node.on('input', msg => {
             var filename = node.filename || msg.filename || "";
 
             if (msg.payload == 'open') {
@@ -39,7 +39,7 @@ module.exports = function(RED) {
                 }
             }
             if (msg.payload == 'playpause') {
-                omxp.playPause(function(err){
+                omxp.playPause(err => {
                     if (err){
                         node.error(err, msg);
                     } else {
@@ -48,7 +48,7 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'pause') {
-                omxp.pause(function(err){
+                omxp.pause(err => {
                     if (err) {
                         node.error(err, msg);
                     } else {
@@ -57,7 +57,7 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'stop') {
-                omxp.stop(function(err){
+                omxp.stop(err => {
                     if (err) {
                         node.error(err, msg);
                     } else {
@@ -66,23 +66,23 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'volumeup') {
-                omxp.volumeUp(function(err){
+                omxp.volumeUp(err => {
                     if (err) node.error(err, msg);
                 });
             }
             if (msg.payload == 'volumedown') {
-                omxp.volumeDown(function(err){
+                omxp.volumeDown(err => {
                     if (err) node.error(err, msg);
                 });
             }
             if (msg.payload == 'getduration') {
-                omxp.getDuration(function(err, duration){
+                omxp.getDuration((err, duration) => {
                     msg.status = {};
                     msg.status.duration = duration;
                 });
             }
             if (msg.payload == 'getposition') {
-                omxp.getDuration(function(err, position){
+                omxp.getDuration((err, position) => {
                     msg.status = {};
                     msg.status.position = position;
                 });
@@ -98,7 +98,7 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getvolume') {
-                omxp.getVolume(function(err, volume){
+                omxp.getVolume(err, volume => {
                     msg.status = {};
                     msg.status.vol = volume;
                 });
@@ -107,13 +107,13 @@ module.exports = function(RED) {
                 var volume = parseFloat(msg.payload.split(' ')[1]);
                 if (volume > 1) volume = 1;
                 if (volume < 0) volume = 0;
-                omxp.setVolume(volume, function(err, volume){
+                omxp.setVolume(volume, (err, volume) => {
                     node.error(err);
                 });
             }
             if (msg.payload.startsWith('setposition')) {
                 var position = parseInt(msg.payload.split(' ')[1]);
-                omxp.setPosition(position, function(err){
+                omxp.setPosition(position, err => {
                     node.error(err);
                 });
             }
@@ -121,7 +121,7 @@ module.exports = function(RED) {
         });
 
         function updateStatus() {
-            omxp.getStatus(function(err, status){
+            omxp.getStatus((err, status) => {
                 if (status) {
                     switch (status) {
                         case 'Playing':
@@ -139,7 +139,7 @@ module.exports = function(RED) {
             });
         }
 
-        omxp.on('changeStatus',function(status) {
+        omxp.on('changeStatus', (status) => {
             switch (status.status) {
                 case 'Playing':
                     node.status({fill:"green",shape:"dot",text:"Playing"});
@@ -156,7 +156,7 @@ module.exports = function(RED) {
             node.send(msg);
         });
 
-        omxp.on('finish', function() {
+        omxp.on('finish', () => {
             node.status({fill:"red",shape:"dot",text:"Stopped"});
             var msg = {};
             msg.status = {};
@@ -164,7 +164,7 @@ module.exports = function(RED) {
             node.send(msg);
         });
 
-        node.on('close', function() {
+        node.on('close', () => {
             omxp.removeAllListeners('finish');
         });
     }
