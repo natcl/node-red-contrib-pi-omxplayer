@@ -89,7 +89,8 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload.startsWith('setvolume')) {
-                var volume = parseFloat(msg.payload.split()[1]);
+                var volume = parseFloat(msg.payload.split(' ')[1]);
+                node.warn(volume);
                 if (volume > 1) volume = 1;
                 if (volume < 0) volume = 0;
                 omxp.setVolume(volume, function(err, volume){
