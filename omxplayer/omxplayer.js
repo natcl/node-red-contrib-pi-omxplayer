@@ -88,18 +88,20 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getstatus') {
+                msg.status = {};
                 omxp.getStatus(function(err, status){
-                    msg.status = {};
-                    msg.status.status = status;
+                    if (status) {
+                        msg.status.status = status;
+                    } else {
+                        node.error(err);
+                    }
                 });
-
             }
             if (msg.payload == 'getvolume') {
                 omxp.getVolume(function(err, volume){
                     msg.status = {};
                     msg.status.vol = volume;
                 });
-
             }
             if (msg.payload.startsWith('setvolume')) {
                 var volume = parseFloat(msg.payload.split(' ')[1]);
