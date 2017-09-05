@@ -34,27 +34,34 @@ module.exports = function(RED) {
                     return;
                 } else {
                     omxp.open(filename, opts);
-                    // omxp.getStatus(function(err, status){
-                    //     node.warn(status);
-                    //     if (status == 'Playing') {
-                    //         node.status({fill:"green",shape:"dot",text:"Playing..."});
-                    //     }
-                    // });
+                    setTimeout(updateStatus, 100);
                 }
             }
             if (msg.payload == 'playpause') {
                 omxp.playPause(function(err){
-                    if (err) node.error(err, msg);
+                    if (err){
+                        node.error(err, msg);
+                    } else {
+                        setTimeout(updateStatus, 100);
+                    }
                 });
             }
             if (msg.payload == 'pause') {
                 omxp.pause(function(err){
-                    if (err) node.error(err, msg);
+                    if (err) {
+                        node.error(err, msg);
+                    } else {
+                        setTimeout(updateStatus, 100);
+                    }
                 });
             }
             if (msg.payload == 'stop') {
                 omxp.stop(function(err){
-                    if (err) node.error(err, msg);
+                    if (err) {
+                        node.error(err, msg);
+                    } else {
+                        node.status({fill:"red",shape:"dot",text:"Stopped"});
+                    }
                 });
             }
             if (msg.payload == 'volumeup') {
@@ -73,15 +80,30 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getstatus') {
-                try {
-                    omxp.getStatus(function(err, status){
-                        if (status) node.warn(status);
-                    });
-                } catch (err) {
-                    node.error(err);
-                }
+                omxp.getStatus(function(err, status){
+                    if (status) node.warn(status);
+                });
             }
         });
+
+        function updateStatus() {
+            omxp.getStatus(function(err, status){
+                if (status) {
+                    switch (status) {
+                        case 'Playing':
+                            node.status({fill:"green",shape:"dot",text:"Playing..."});
+                            break;
+                        case 'Stopped':
+                            node.status({fill:"red",shape:"dot",text:"Stopped"});
+                            break;
+                        case 'Paused':
+                            node.status({fill:"gray",shape:"dot",text:"Paused..."});
+                            break;
+                    }
+                }
+
+            });
+        }
 
         omxp.on('finish', function() {
             node.warn('============= Finished =============');
