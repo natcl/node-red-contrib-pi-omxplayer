@@ -77,18 +77,29 @@ module.exports = function(RED) {
             }
             if (msg.payload == 'getduration') {
                 omxp.getDuration(function(err, duration){
-                    node.warn(duration);
+                    msg.status = {};
+                    msg.status.duration = duration;
+                });
+            }
+            if (msg.payload == 'getposition') {
+                omxp.getDuration(function(err, position){
+                    msg.status = {};
+                    msg.status.position = position;
                 });
             }
             if (msg.payload == 'getstatus') {
                 omxp.getStatus(function(err, status){
-                    if (status) node.warn(status);
+                    msg.status = {};
+                    msg.status.status = status;
                 });
+
             }
             if (msg.payload == 'getvolume') {
                 omxp.getVolume(function(err, volume){
-                    node.warn(volume);
+                    msg.status = {};
+                    msg.status.vol = volume;
                 });
+
             }
             if (msg.payload.startsWith('setvolume')) {
                 var volume = parseFloat(msg.payload.split(' ')[1]);
@@ -98,6 +109,13 @@ module.exports = function(RED) {
                     node.error(err);
                 });
             }
+            if (msg.payload.startsWith('setposition')) {
+                var position = parseInt(msg.payload.split(' ')[1]);
+                omxp.setPosition(position, function(err){
+                    node.error(err);
+                });
+            }
+            node.send(msg);
         });
 
         function updateStatus() {
