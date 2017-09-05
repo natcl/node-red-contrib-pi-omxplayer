@@ -88,8 +88,8 @@ module.exports = function(RED) {
                 });
             }
             if (msg.payload == 'getstatus') {
-                msg.status = {status:null};
-                omxp.getStatus((err, status, msg) => {
+                msg.status = {};
+                omxp.getStatus(err, status => {
                     if (status) {
                         msg.status.status = status;
                     } else {
