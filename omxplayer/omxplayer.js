@@ -88,6 +88,14 @@ module.exports = function(RED) {
                     node.warn(volume);
                 });
             }
+            if (msg.payload.startsWith('setvolume')) {
+                var volume = parseFloat(msg.payload.split()[1]);
+                if (volume > 1) volume = 1;
+                if (volume < 0) volume = 0;
+                omxp.setVolume(volume, function(err, volume){
+                    node.error(err);
+                });
+            }
         });
 
         function updateStatus() {
