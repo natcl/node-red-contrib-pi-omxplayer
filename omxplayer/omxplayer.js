@@ -105,6 +105,10 @@ module.exports = function(RED) {
             });
         }
 
+        omxp.on('changeStatus',function(status) {
+            node.warn(status);
+        });
+
         omxp.on('finish', function() {
             node.warn('============= Finished =============');
             node.status({fill:"red",shape:"dot",text:"Stopped"});
