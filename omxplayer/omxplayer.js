@@ -140,7 +140,7 @@ module.exports = function(RED) {
             node.status({fill:"red",shape:"dot",text:"Stopped"});
             var msg = {};
             msg.status = {};
-            msg.status.status = 'Stoped';
+            msg.status.status = 'Stopped';
             node.send(msg);
         });
 
