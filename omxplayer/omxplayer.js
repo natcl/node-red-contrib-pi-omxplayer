@@ -95,6 +95,7 @@ module.exports = function(RED) {
                     } else {
                         node.error(err);
                     }
+                    node.send(msg);
                 });
             }
             if (msg.payload == 'getvolume') {
@@ -117,7 +118,7 @@ module.exports = function(RED) {
                     if (err) node.error(err);
                 });
             }
-            node.send(msg);
+            //node.send(msg);
         });
 
         function updateStatus() {
