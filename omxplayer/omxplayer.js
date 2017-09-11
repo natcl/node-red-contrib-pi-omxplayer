@@ -177,7 +177,6 @@ module.exports = function(RED) {
             msg.status = {};
             msg.status.status = 'Stopped';
             node.send(msg);
-            cleanup();
         });
 
         node.on('close', () => {
