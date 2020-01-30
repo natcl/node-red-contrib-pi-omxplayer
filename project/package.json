@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A Node-RED node to control OMXPlayer on the Raspberry pi",
   "dependencies": {
-    "node-red": "~0.17.0",
+    "node-red": "~1.0.3",
     "node-red-contrib-pi-omxplayer": "../"
   },
   "repository": {
